@@ -24,3 +24,7 @@ func HelloHttp(w http.ResponseWriter, r *http.Request){
 		Lastname:  "RojanaphrukV2",
 	})
 }
+
+func getName() string{
+	return "r9k"
+}

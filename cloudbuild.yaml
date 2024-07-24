@@ -1,4 +1,9 @@
 steps:
+  - name: golang:1.22
+    entrypoint: /bin/bash
+    args:
+      - go test -timeout 1m -v ./...
+
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     args:
       - gcloud
