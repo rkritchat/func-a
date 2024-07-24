@@ -12,7 +12,7 @@ steps:
       - gcloud
       - functions
       - deploy
-      - go-funcv2
+      - $_FUNCTION_NAME
       - --entry-point=$_ENTRY_POINT
       - --gen2
       - --region=$_REGION
@@ -20,7 +20,15 @@ steps:
       - --trigger-http
       - --runtime=$_RUNTIME
       - --no-allow-unauthenticated
-      - --service-account=$_SERVICE_ACCOUNT
+
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    args:
+      - gcloud
+      - functions
+      - add-invoker-policy-binding
+      - $_FUNCTION_NAME
+      - --region=$_REGION
+      - --member=$_SERVICE_ACCOUNT
 
 options:
   logging: CLOUD_LOGGING_ONLY
