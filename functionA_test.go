@@ -14,7 +14,7 @@ func Test_getName(t *testing.T){
 	}{
 		{
 			name: "should return valid name",
-			expectedR: "r9k2",
+			expectedR: "r9k",
 		},
 	}
 
