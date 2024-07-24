@@ -20,7 +20,7 @@ type Student struct{
 func HelloHttp(w http.ResponseWriter, r *http.Request){
 	fmt.Println("c...")
 	_ = json.NewEncoder(w).Encode(&Student{
-		Firstname: "Kritchat",
-		Lastname:  "Rojanaphruk",
+		Firstname: "KritchatV2",
+		Lastname:  "RojanaphrukV2",
 	})
 }

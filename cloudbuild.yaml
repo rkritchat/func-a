@@ -1,0 +1,16 @@
+steps:
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    args:
+      - gcloud
+      - functions
+      - deploy
+      - go-funcv2
+      - --entry-point=$_ENTRY_POINT
+      - --gen2
+      - --region=$_REGION
+      - --source=.
+      - --trigger-http
+      - --runtime=$_RUNTIME
+      - --no-allow-unauthenticated
+      - --run-service-account=$_SERVICE_ACCOUNT
+
