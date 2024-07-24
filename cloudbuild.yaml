@@ -12,7 +12,6 @@ steps:
       - --trigger-http
       - --runtime=$_RUNTIME
       - --no-allow-unauthenticated
-      - --run-service-account=$_SERVICE_ACCOUNT
 
 options:
   logging: CLOUD_LOGGING_ONLY
