@@ -9,7 +9,7 @@ deploy:
 		--no-allow-unauthenticated
 
 grant:
-	gcloud functions add-invoker-policy-binding go-funcv2 \
+	gcloud functions add-invoker-policy-binding funcv3 \
      --region="australia-southeast1" \
      --member='serviceAccount:cloudFuncV2@totemic-web-426910-r5.iam.gserviceaccount.com'
 

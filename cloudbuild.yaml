@@ -21,15 +21,5 @@ steps:
       - --runtime=$_RUNTIME
       - --no-allow-unauthenticated
 
-  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    args:
-      - gcloud
-      - functions
-      - add-invoker-policy-binding
-      - $_FUNCTION_NAME
-      - --region=$_REGION
-      - --member=$_SERVICE_ACCOUNT
-
 options:
   logging: CLOUD_LOGGING_ONLY
-
