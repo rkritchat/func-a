@@ -1,5 +1,5 @@
 deploy:
-	gcloud functions deploy go-http-function \
+	gcloud functions deploy go-server \
     --gen2 \
     --runtime=go121 \
     --region=australia-southeast1 \
@@ -9,11 +9,11 @@ deploy:
 		--no-allow-unauthenticated
 
 grant:
-	gcloud functions add-invoker-policy-binding funcv3 \
+	gcloud functions add-invoker-policy-binding go-server \
      --region="australia-southeast1" \
-     --member='serviceAccount:cloudFuncV2@totemic-web-426910-r5.iam.gserviceaccount.com'
+     --member='serviceAccount:sa-client@totemic-web-426910-r5.iam.gserviceaccount.com'
 
-public:
+internal:
 	gcloud functions deploy go-http-function \
     --gen2 \
     --runtime=go121 \
@@ -21,7 +21,8 @@ public:
     --source=. \
     --entry-point=HelloHTTP \
     --trigger-http \
-    --allow-unauthenticated
+    --allow-unauthenticated \
+	  --ingress-settings=internal-only
 
 gBuild:
 	gcloud builds submit

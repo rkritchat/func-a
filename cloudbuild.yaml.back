@@ -1,16 +1,25 @@
 steps:
+  - name: golang:1.22
+    entrypoint: /bin/bash
+    args:
+      - -c
+      - |
+        go install github.com/jstemmer/go-junit-report/v2@latest
+        2>&1 go test -timeout 1m -v ./... | /go/bin/go-junit-report -set-exit-code -iocopy -out ${SHORT_SHA}_test_log.xml
+
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     args:
       - gcloud
       - functions
       - deploy
-      - go-funcv2
-      - --entry-point=HelloHTTP
+      - $_FUNCTION_NAME
+      - --entry-point=$_ENTRY_POINT
       - --gen2
-      - --region=australia-southeast1
+      - --region=$_REGION
       - --source=.
       - --trigger-http
-      - --runtime=go121
+      - --runtime=$_RUNTIME
       - --no-allow-unauthenticated
-      - --run-service-account=cloudFuncV2@totemic-web-426910-r5.iam.gserviceaccount.com
 
+options:
+  logging: CLOUD_LOGGING_ONLY

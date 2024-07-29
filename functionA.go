@@ -8,23 +8,23 @@ import (
 	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
 )
 
-func init(){
+func init() {
 	functions.HTTP("HelloHTTP", HelloHttp)
 }
 
-type Student struct{
+type Student struct {
 	Firstname string `json:"firstname"`
 	Lastname  string `json:"lastname"`
 }
 
-func HelloHttp(w http.ResponseWriter, r *http.Request){
+func HelloHttp(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("c...")
 	_ = json.NewEncoder(w).Encode(&Student{
-		Firstname: "KritchatV2",
+		Firstname: getName(),
 		Lastname:  "RojanaphrukV2",
 	})
 }
 
-func getName() string{
+func getName() string {
 	return "r9k"
 }
