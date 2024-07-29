@@ -12,7 +12,7 @@ steps:
       - gcloud
       - functions
       - deploy
-      - func-a
+      - func-a-$_ENV
       - --entry-point=HelloHTTP
       - --gen2
       - --region=australia-southeast1
